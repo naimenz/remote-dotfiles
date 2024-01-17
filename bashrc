@@ -1,6 +1,5 @@
 . ~/.remote-dotfiles/exports
 . ~/.remote-dotfiles/git_aliases
-. ~/.remote-dotfiles/bash_aliases
 
 # save bash history from multiple terminals
 # https://eli.thegreenplace.net/2013/06/11/keeping-persistent-history-in-bash
