@@ -1,3 +1,6 @@
+if [ -f /usr/share/bash-completion/completions/git ]; then
+    . /usr/share/bash-completion/completions/git 
+fi
 # this file contains shell aliases specifically for git listed alphabetically
 # I use git status all the time so doesn't need a good mnemonic
 alias ga='git add '
