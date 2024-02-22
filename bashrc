@@ -29,3 +29,5 @@ PROMPT_COMMAND="run_on_prompt_command"
 export HISTTIMEFORMAT="%F %T  "
 # Useful alias for searching persistent history
 alias phgrep='cat ~/.persistent_history|grep --color'
+# Useful alias for sourcing a local venv
+alias sv='source .venv/bin/activate || source venv/bin/activate'
