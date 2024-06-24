@@ -31,3 +31,6 @@ export HISTTIMEFORMAT="%F %T  "
 alias phgrep='cat ~/.persistent_history|grep --color'
 # Useful alias for sourcing a local venv
 alias sv='source .venv/bin/activate || source venv/bin/activate'
+
+# Useful alias for running multi-gpu experiments in robust-llm
+alias alaunch='accelerate launch --config_file=accelerate_config.yaml --num_processes=2 '
