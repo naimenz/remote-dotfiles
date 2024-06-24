@@ -1,0 +1,60 @@
+# This file contains shell aliases specifically for kubernetes and kubectl
+alias kgj='kubectl get job '
+alias kgp='kubectl get pod '
+alias kgw='kubectl get workload '
+alias kdj='kubectl describe job '
+alias kdp='kubectl describe pod '
+alias kdw='kubectl describe workload '
+alias kl='kubectl logs '
+
+alias kcc='kubectl config current-context '
+alias kuc='kubectl config use-context '
+
+# Temporary, user-specific commands
+alias kuniki='ku kubectl -n u-nikihowe '
+
+# More complex functions
+
+
+# For autocomplete of below functions
+_kpod_complete() {
+    local pods=($(kubectl get pods --no-headers -o custom-columns=":metadata.name"))
+    _describe 'pod' pods
+}
+
+kexec() {
+    local pod_name="$1"
+    if [[ -z "$pod_name" ]]; then
+        echo "Usage: kexec <pod>"
+        return 1
+    fi
+    kubectl exec -it "$pod_name" -- /bin/bash
+}
+
+compdef _kpod_complete kexec
+
+klf() {
+    local pod_name="$1"
+    if [[ -z "$pod_name" ]]; then
+        echo "Usage: klog <pod>"
+        return 1
+    fi
+
+
+
+    local log_file="/tmp/${pod_name}.txt"
+
+    # Touch the file to ensure it exists
+    touch "$log_file"
+    
+    # Try to open with code, fallback to vim if code fails
+    if ! code "$log_file" 2>/dev/null; then
+        vim "$log_file"
+    fi
+
+    # Start logging
+    echo "Starting to log pod $pod_name, press CTRL+C to stop..."
+    kubectl logs -f "$pod_name" > "$log_file"
+}
+
+compdef _kpod_complete klf
