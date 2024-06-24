@@ -12,6 +12,7 @@ alias gc='git commit -m '
 alias gca='git commit --amend '
 alias gcn='git commit --amend --no-edit '
 alias gd='git diff '
+alias gds='git diff --staged'
 __git_complete gd _git_diff
 alias gg='git status -sb'  # sb is just nicer to look at
 alias gl='git log --oneline -10'
@@ -20,7 +21,11 @@ alias gl5='git log --oneline -5'
 alias gpl='git pull '
 __git_complete gpl _git_pull
 alias gps='git push '  # so that I don't accidentally push when I mean to pull
+alias gpsu='git push -u origin HEAD'  # for making new remote branches
+alias gpsf='git push --force'  # for forcefully updating the remote (e.g. after rebase)
 __git_complete gps _git_push
+__git_complete gpsu _git_push
+__git_complete gpsf _git_push
 alias gr='git reset '
 __git_complete gr _git_reset
 alias gra='git reset :/'
