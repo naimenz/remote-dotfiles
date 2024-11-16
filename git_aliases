@@ -12,7 +12,7 @@ alias gau='git add $(git diff --name-only --cached)'
 alias gbs='git branch -vv'
 # for operating on branches
 alias gb='git branch'
-__git_complete gd=_git_branch
+__git_complete gd _git_branch
 alias gc='git commit -m '
 alias gca='git commit --amend '
 alias gcn='git commit --amend --no-edit '
