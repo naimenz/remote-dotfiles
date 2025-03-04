@@ -34,3 +34,6 @@ alias sv='source .venv/bin/activate || source venv/bin/activate'
 
 # Useful alias for running multi-gpu experiments in robust-llm
 alias alaunch='accelerate launch --config_file=accelerate_config.yaml --num_processes=2 '
+
+# Useful for manually backing up my SCRATCH directory on devboxes
+alias scratchbackup='mkdir -p /robust_llm_data/ian/SCRATCH_backups && TIMESTAMP=$(date +%Y%m%d_%H%M%S) && cd /root/robust-llm && tar -czf "/robust_llm_data/ian/SCRATCH_backups/SCRATCH.${TIMESTAMP}.tar.gz" SCRATCH/ && cd -'
